@@ -4,7 +4,7 @@ A local Windows 10/11 disk and partition manager recreated from the supplied scr
 
 ## Run
 
-Open `dist/Partly-20-1.1.0-Windows.exe` after building. Windows requests administrator access so storage operations are available. The unsigned executable is a local build.
+Open `dist/Partly 20.exe` after building. Windows requests administrator access so storage operations are available. The unsigned executable is a local build.
 
 From source, install Node.js 22 or later and pnpm, then run:
 

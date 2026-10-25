@@ -1,8 +1,8 @@
 {
   "name": "partly-20",
-  "version": "1.1.0",
+  "version": "20.0.0",
   "private": true,
-  "description": "Partly 20 — local Windows disk and partition manager",
+  "description": "Partly 20 - Disk & Partition Manager",
   "type": "module",
   "main": "electron/main.cjs",
   "scripts": {
@@ -22,15 +22,44 @@
     "productName": "Partly 20",
     "copyright": "Partly 20",
     "asar": true,
-    "files": ["electron/**/*", "lib/**/*", "src/**/*", "assets/**/*", "package.json"],
-    "extraResources": [{"from": "windows", "to": "windows", "filter": ["*.ps1"]}],
-    "directories": {"output": "dist"},
+    "files": [
+      "electron/**/*",
+      "lib/**/*",
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "windows",
+        "to": "windows",
+        "filter": [
+          "*.ps1"
+        ]
+      }
+    ],
+    "directories": {
+      "output": "dist"
+    },
     "win": {
       "icon": "assets/icon.ico",
-      "target": [{"target": "portable", "arch": ["x64"]}],
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
       "requestedExecutionLevel": "requireAdministrator",
-      "artifactName": "Partly-20-${version}-Windows.${ext}"
+      "artifactName": "Partly 20.${ext}",
+      "executableName": "Partly 20"
     },
-    "portable": {"requestExecutionLevel": "admin"}
+    "portable": {
+      "requestExecutionLevel": "admin"
+    }
+  },
+  "author": {
+    "name": "Partly 20"
   }
 }

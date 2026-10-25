@@ -32,7 +32,7 @@ export function createPreviewBridge() {
     findOperatingSystems:async()=>({installations:[{sourceDrive:'C',caption:'Windows 11 (reference preview)'}]}),
     runTool:async()=>{throw new Error('This is a reference-data preview. Run the Windows desktop app to use this tool.');},
     choosePath:async()=>null,cancelJob:async()=>({requested:false}),
-    getInfo:async()=>({pcId:'REFERENCE-PREVIEW-DEVICE',version:'1.1.0'}),copyText:async()=>{},openFolder:async()=>{},openExternal:async()=>{},
+    getInfo:async()=>({pcId:'REFERENCE-PREVIEW-DEVICE',version:'20.0.0'}),copyText:async()=>{},openFolder:async()=>{},openExternal:async()=>{},
     getEmailState:async()=>({configured:false}),saveEmail:async(value)=>{settings.email={...settings.email,...value};delete settings.email.password;return settings;},
     testNotification:async()=>({message:'UI preview — desktop notifications run in the desktop app.'}),testEmail:async()=>({cancelled:true}),
     checkUpdates:async()=>({configured:false,available:false,message:'This local build has no published update feed. Configure a local or HTTPS release manifest in Application settings.'}),installUpdate:async()=>({cancelled:true}),cancelShutdown:async()=>({success:true}),
