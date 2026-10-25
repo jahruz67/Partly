@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Partly 20 — Disks &amp; Volumes</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <svg class="svg-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-disks" viewBox="0 0 24 24"><path d="M5 3h14l3 6v11H2V9l3-6Z"/><path d="M2 9h20M4 14h16M6 6h12M17 17h2"/></symbol>
+    <symbol id="icon-history" viewBox="0 0 24 24"><path d="M3 11a9 9 0 1 1 2.4 7.1M3 4v7h7M12 7v6l4 2"/></symbol>
+    <symbol id="icon-backup" viewBox="0 0 24 24"><path d="M4 3h13l3 3v6M4 3v18h8M7 3v6h9V3M7 17v-4h5"/><path d="m17 12 5 2v3c0 3-5 5-5 5s-5-2-5-5v-3l5-2Z"/><path d="m15 17 1.5 1.5L19 16"/></symbol>
+    <symbol id="icon-migration" viewBox="0 0 24 24"><rect x="1.5" y="3" width="9" height="7" rx="1"/><rect x="13.5" y="14" width="9" height="7" rx="1"/><path d="M4 13v5h6m-2-2 2 2-2 2M20 11V6h-6m2-2-2 2 2 2"/></symbol>
+    <symbol id="icon-settings" viewBox="0 0 24 24"><path d="m9 3 .6-2h4.8l.6 2 2 .9 2.2-.5 2.4 4.2-1.5 1.6.2 2.2 1.5 1.7-2.4 4.1-2.2-.4-2 1-.6 2.2H9.6L9 18l-2-1-2.2.4-2.4-4.1 1.5-1.7.2-2.2L2.6 7.8 5 3.6l2.2.5 1.8-1Z" transform="translate(0 1) scale(.94)"/><circle cx="12" cy="11" r="3.3"/></symbol>
+    <symbol id="icon-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.6a2.6 2.6 0 1 1 4.1 2.2c-1.2.7-1.6 1.2-1.6 2.7M12 17h.01"/></symbol>
+    <symbol id="icon-refresh" viewBox="0 0 24 24"><path d="M20 9a8 8 0 1 0 .1 6M20 3v6h-6"/></symbol>
+    <symbol id="icon-undo" viewBox="0 0 24 24"><path d="m8 4-5 5 5 5M3 9h10a7 7 0 0 1 0 14" transform="translate(1 -2)"/></symbol>
+    <symbol id="icon-redo" viewBox="0 0 24 24"><path d="m16 4 5 5-5 5M21 9H11a7 7 0 0 0 0 14" transform="translate(-1 -2)"/></symbol>
+    <symbol id="icon-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="icon-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
+  </svg>
+  <div id="app">
+    <header id="titlebar" class="titlebar">
+      <div class="window-title"><img class="app-icon" src="../assets/icon.svg" alt=""><span class="app-name">Partly <strong>20</strong></span><span class="title-divider"></span><span class="window-section">Disks &amp; Volumes</span></div>
+      <div class="window-controls" aria-label="Window controls">
+        <button id="window-minimize" class="window-control" title="Minimize" aria-label="Minimize"><svg viewBox="0 0 12 12"><path d="M1 6h10"/></svg></button>
+        <button id="window-maximize" class="window-control" title="Maximize or restore" aria-label="Maximize or restore"><svg viewBox="0 0 12 12"><rect x="1.5" y="1.5" width="9" height="9"/></svg></button>
+        <button id="window-close" class="window-control window-control-close" title="Close" aria-label="Close"><svg viewBox="0 0 12 12"><path d="m1 1 10 10M11 1 1 11"/></svg></button>
+      </div>
+    </header>
+    <div class="app-body">
+      <nav class="navigation-rail" aria-label="Main navigation">
+        <button id="navigation-toggle" class="rail-brand" title="Expand or collapse navigation" aria-label="Expand or collapse navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+        <button class="rail-button" data-page="backup" title="Backup &amp; Recovery" aria-label="Backup and Recovery"><svg><use href="#icon-backup"/></svg><span class="rail-label">Backup &amp; Recovery</span></button>
+        <button class="rail-button" data-page="migration" title="V2V Migration" aria-label="V2V Migration"><svg><use href="#icon-migration"/></svg><span class="rail-label">V2V Migration</span></button>
+        <button class="rail-button active" data-page="disks" title="Disks &amp; volumes" aria-label="Disks and volumes" aria-current="page"><svg><use href="#icon-disks"/></svg><span class="rail-label">Disks &amp; Volumes</span></button>
+        <button class="rail-button" data-page="history" title="Operation history" aria-label="Operation history"><svg><use href="#icon-history"/></svg><span class="rail-label">Operation history</span></button>
+        <div class="rail-spacer"></div>
+        <button class="rail-button" data-page="help" title="Help &amp; about" aria-label="Help and about"><svg><use href="#icon-help"/></svg><span class="rail-label">Help</span></button>
+        <button class="rail-button" data-page="settings" title="Settings" aria-label="Settings"><svg><use href="#icon-settings"/></svg><span class="rail-label">Settings</span></button>
+      </nav>
+      <aside class="operations-sidebar" aria-label="Partition operations">
+        <div class="sidebar-heading"><h1 id="sidebar-title">Operations</h1><button id="operations-menu" class="sidebar-ellipsis" aria-label="More operations" aria-haspopup="menu">···</button></div>
+        <div id="operation-list" class="operation-list"></div>
+        <div id="sidebar-empty" class="sidebar-empty"><svg class="empty-disk-icon"><use href="#icon-disks"/></svg><p>Select a disk or volume</p><span>Choose a partition to see<br>available operations.</span></div>
+      </aside>
+      <main id="disk-workspace" class="disk-workspace">
+        <div class="workspace-content">
+          <section id="disk-page" aria-labelledby="workspace-title">
+            <div class="page-header"><div class="page-heading"><p class="eyebrow">DISK MANAGEMENT</p><h2 id="workspace-title">Select a disk or volume…</h2><p id="workspace-subtitle" class="workspace-subtitle">Your disks, clearly laid out. Changes stay queued until you apply them.</p></div><button id="refresh-disks" class="button button-subtle refresh-button" title="Refresh disks"><svg><use href="#icon-refresh"/></svg><span>Refresh</span></button></div>
+            <div id="inventory-status" class="inventory-status" role="status"><span class="status-dot scanning"></span>Reading Windows disks…</div>
+            <div id="disk-list" class="disk-list"><div class="loading-state"><div class="spinner"></div><h3>Reading your disks</h3><p>Getting the latest volume information from Windows.</p></div></div>
+            <div class="disk-legend" aria-label="Partition legend"><span><i class="legend-used"></i>Used space</span><span><i class="legend-free"></i>Free space</span><span><i class="legend-unallocated"></i>Unallocated</span><span class="legend-selected"><i></i>Selected</span></div>
+          </section>
+          <section id="secondary-page" class="secondary-page" hidden></section>
+        </div>
+        <footer class="action-footer"><div class="queue-actions"><button id="discard-all" class="button button-secondary" disabled>Discard all</button><div class="undo-redo"><button id="undo" class="button button-icon" title="Undo last queued change (Ctrl+Z)" aria-label="Undo last queued change" disabled><svg><use href="#icon-undo"/></svg></button><button id="redo" class="button button-icon" title="Redo queued change (Ctrl+Y)" aria-label="Redo queued change" disabled><svg><use href="#icon-redo"/></svg></button></div><span id="pending-summary" class="pending-summary">No pending changes</span></div><button id="apply-changes" class="button button-primary apply-button" disabled><span>Apply changes</span><svg><use href="#icon-chevron"/></svg></button></footer>
+      </main>
+    </div>
+  </div>
+  <div id="modal-root"></div>
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
