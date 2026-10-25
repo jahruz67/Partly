@@ -38,10 +38,20 @@ jobs:
         shell: powershell
         run: |
           $ErrorActionPreference = 'Stop'
-          & ./tests/advanced-native-fixtures.ps1
-          & ./tests/conversion-file-fixtures.ps1
-          & ./tests/adk-command-fixtures.ps1
-          & ./tests/virtualdisk-file-test.ps1
+          # Robocopy uses nonzero success codes. Isolate each fixture so
+          # its handled native exit code cannot leak into Actions' wrapper.
+          $fixtures = @(
+            './tests/advanced-native-fixtures.ps1'
+            './tests/conversion-file-fixtures.ps1'
+            './tests/adk-command-fixtures.ps1'
+            './tests/virtualdisk-file-test.ps1'
+          )
+          foreach ($fixture in $fixtures) {
+            & powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File $fixture
+            if ($LASTEXITCODE -ne 0) {
+              throw "Fixture $fixture failed with exit code $LASTEXITCODE."
+            }
+          }
       - name: Build portable Windows executable
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: 'false'
