@@ -39,7 +39,23 @@ Optional tool requirements are shown in the app: custom WinPE ISO/USB creation n
 
 Settings, diagnostic exports, and operation history stay on this computer. SMTP passwords are encrypted using Windows credential protection. Email is sent only after you configure and enable it. Issue reports are saved locally and are not uploaded. Settings and history are stored under the Windows user application data folder for Partly 20. Pending operations are kept only in memory to avoid replaying an outdated disk layout.
 
-## Verify and build
+## Automated releases and website
+
+Push this repository to GitHub to activate `.github/workflows/release.yml`. Each branch push builds the pushed revision on Windows, runs the source checks, Node tests, and Windows fixtures, then publishes a release tagged `build-<full commit SHA>`. A push containing several commits builds the final commit of that push. Local commits trigger builds once pushed. You can also run the workflow manually from **Actions → Build and release Windows app → Run workflow**.
+
+Releases contain `Partly-20-windows-x64.exe` and `SHA256SUMS.txt`. Builds from other branches are prereleases; the current default-branch build becomes the latest release. Older builds are allowed to finish without replacing the latest default-branch download. Rerunning a published commit preserves its assets. A prerelease is promoted when the same commit reaches the default branch. The workflow uses GitHub's built-in token and needs no personal access token or signing secrets. Executables remain unsigned.
+
+The static download website is in `docs/`. To publish it:
+
+1. Push these files to `master` (or your repository's default branch).
+2. Open **Settings → Pages** in GitHub.
+3. Choose **Deploy from a branch**, select **master** and **/docs**, then **Save**. If you use a different default branch, select that branch instead.
+
+For this repository, the site address is `https://jahruz67.github.io/Partly/`. GitHub Pages republishes when you push changes to `docs/`. No website build, custom domain, or separate deployment workflow is required. See [GitHub's publishing-source instructions](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+
+The website's download button follows GitHub's latest release and becomes usable after the first successful default-branch release. All builds and checksums are linked separately. If you fork or rename the repository, update the GitHub links in `docs/index.html`. The website is a download and information page; disk operations run in the Windows desktop app.
+
+## Local verification
 
 All application source was completed before the first application build.
 
